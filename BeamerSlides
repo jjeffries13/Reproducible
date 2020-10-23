@@ -1,79 +1,3 @@
-\documentclass[10pt]{beamer}
-\usepackage{graphicx}
-\graphicspath{ {./Images/} }
-\usepackage{amsmath, amssymb, amsthm}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
-\usepackage{url}
-\ifx\hypersetup\undefined
-  \AtBeginDocument{%
-    \hypersetup{unicode=true, pdfusetitle,
- bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
- breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},backref=false,colorlinks=false}
-  }
-\else
-  \hypersetup{unicode=true,pdfusetitle,
- bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
- breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},backref=false,colorlinks=false}
-\fi
-\usepackage{breakurl}
-\makeatletter
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
- % this default might be overridden by plain title style
- \newcommand\makebeamertitle{\frame{\maketitle}}%
- % (ERT) argument for the TOC
- \AtBeginDocument{%
-   \let\origtableofcontents=\tableofcontents
-   \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
-   \def\gobbletableofcontents#1{\origtableofcontents}
- }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
-\usetheme{Boadilla}
-
-\makeatother
-
-\begin{document}
-
-<<setup, include=FALSE>>=
-library(knitr)
-opts_chunk$set(fig.path = 'figure/beamer', fig.align = 'center', fig.show = 'hold', size = 'footnotesize')
-@
-
-\title[Assignment 10 Slides]{Autobiography of Jay Jeffries}
-
-\author{Jay Jeffries 
-\thanks{to the haters}}
-\makebeamertitle
-
-\section{Intro}
-\begin{frame}[fragile]{Introduction}
-
-\begin{itemize}
-\item Birthday: March 12th, 1996
-\begin{itemize}
-\item I share this birthday with James Taylor, the guy that voices Fred from Scooby-Doo, and the day in which John Wayne Gacy was convicted of 33 murders, so... be jealous..
-\end{itemize}
-
-\item Hometown: Grand Island, Nebraska
-
-\item Program: Quantitative, Qualitative, and Psychometric Methods of the UNL Educational Psychology Department
-
-\item Graduation: From 2022 to beyond!
-\end{itemize}
-\end{frame}
-
-\section{Animal Pic}
-\begin{frame}[fragile]{Favorite Animal}
-\title{The Mystical and Brash Shiba-Inu of the Meme Variety}
-
-\includegraphics[width = \textwidth]{Shibz.png}
-
-\end{frame}
-
 \section{R Plot}
 \begin{frame}[fragile]{My Favorite Plot}
 <<echo = FALSE , results = 'hide'>>=
@@ -84,12 +8,12 @@ if (!"palmerpenguins" %in% installed.packages()) {
 #Installing and loading palmerpenguins data up from GitHub!
 library(palmerpenguins)
 library(ggplot2)
-library("grid")
-library("png")
+library(grid)
+library(png)
 #Loading the other appropriate libraries for my plots
 @
 
-<<penguin-plots,fig.width = 4, fig.height = 4, out.width = '.45\\linewidth'>>=
+<<penguin-plots, fig.width = 4, fig.height = 4, out.width = '.45\\linewidth'>>=
 img <- png::readPNG("penguins1.png")
 penguin_pic <- rasterGrob(img, interpolate = TRUE)
 penguin_line + theme(panel.grid.major = element_blank(), 
@@ -99,11 +23,6 @@ penguin_line + theme(panel.grid.major = element_blank(),
               annotation_custom(penguin_pic) +
               ggtitle("Let's Blow This Popsicle Stand")
 @
-\end{frame}
-
-\section{CV}
-\begin{frame}[fragile]{Curriculum Vitae}
-
 \end{frame}
 
 \end{document}
