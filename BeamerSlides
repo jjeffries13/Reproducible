@@ -14,6 +14,12 @@ library(png)
 @
 
 <<penguin-plots, fig.width = 4, fig.height = 4, out.width = '.45\\linewidth'>>=
+penguin_line <- ggplot(penguins, aes(x = flipper_length_mm, y = bill_depth_mm, fill = species)) + 
+                geom_point() + 
+                geom_smooth(method = "lm", se = FALSE) + 
+                theme_bw()
+penguin_line
+
 img <- png::readPNG("penguins1.png")
 penguin_pic <- rasterGrob(img, interpolate = TRUE)
 penguin_line + theme(panel.grid.major = element_blank(), 
